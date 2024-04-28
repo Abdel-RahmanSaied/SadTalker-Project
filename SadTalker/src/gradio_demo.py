@@ -1,12 +1,12 @@
 import torch, uuid
-import os, sys, shutil
-from src.utils.preprocess import CropAndExtract
-from src.test_audio2coeff import Audio2Coeff  
-from src.facerender.animate import AnimateFromCoeff
-from src.generate_batch import get_data
-from src.generate_facerender_batch import get_facerender_data
+import os, shutil
+from SadTalker.src.utils.preprocess import CropAndExtract
+from SadTalker.src.test_audio2coeff import Audio2Coeff
+from SadTalker.src.facerender.animate import AnimateFromCoeff
+from SadTalker.src.generate_batch import get_data
+from SadTalker.src.generate_facerender_batch import get_facerender_data
 
-from src.utils.init_path import init_path
+from SadTalker.src.utils.init_path import init_path
 
 from pydub import AudioSegment
 

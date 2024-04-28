@@ -2,10 +2,18 @@ import os
 import glob
 import subprocess
 import matplotlib.pyplot as plt
+from torchvision.transforms.functional import rgb_to_grayscale
+
+
+# import torchvision.transforms.functional as F
+# import matplotlib
+# matplotlib.use('Agg')  # Non-interactive backend
+# import matplotlib.pyplot as plt
+
 
 class SadTalkerApp:
     def __init__(self):
-        self.download_models()
+       # self.download_models()
         pass
 
     def run_command(self, command):
@@ -34,14 +42,32 @@ class SadTalkerApp:
         return img_path
 
     def run_inference(self, audio_path, img_path, result_dir='results'):
-        command = f"python3 SadTalker/inference.py --driven_audio {audio_path} " \
+        command = f"python3 ./inference.py --driven_audio {audio_path} " \
                   f"--source_image {img_path} --result_dir {result_dir} --still --preprocess full --enhancer gfpgan"
         self.run_command(command)
         return result_dir
 
+    # def display_animation(self, result_dir):
+    #     results = sorted(os.listdir(result_dir))
+    #     # result_dir = 'results'
+    #     # if not os.path.exists(result_dir):
+    #     #     os.makedirs(result_dir)
+    #
+    #     print("Results:", results)
+    #     mp4_name = glob.glob(f'{result_dir}/*.mp4')[0]
+    #     print(f"Animation video saved at: {os.path.abspath(mp4_name)}")
+    #     print("You can view the video with any media player that supports MP4 format.")
     def display_animation(self, result_dir):
+        if not os.path.exists(result_dir):
+            os.makedirs(result_dir)
+
         results = sorted(os.listdir(result_dir))
         print("Results:", results)
-        mp4_name = glob.glob(f'{result_dir}/*.mp4')[0]
-        print(f"Animation video saved at: {os.path.abspath(mp4_name)}")
-        print("You can view the video with any media player that supports MP4 format.")
+
+        mp4_files = glob.glob(f'{result_dir}/*.mp4')
+        if mp4_files:
+            mp4_name = mp4_files[0]
+            print(f"Animation video saved at: {os.path.abspath(mp4_name)}")
+            print("You can view the video with any media player that supports MP4 format.")
+        else:
+            print("No MP4 files found in the result directory.")

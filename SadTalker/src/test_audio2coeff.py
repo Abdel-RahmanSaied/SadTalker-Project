@@ -8,10 +8,10 @@ from scipy.signal import savgol_filter
 import safetensors
 import safetensors.torch 
 
-from src.audio2pose_models.audio2pose import Audio2Pose
-from src.audio2exp_models.networks import SimpleWrapperV2 
-from src.audio2exp_models.audio2exp import Audio2Exp
-from src.utils.safetensor_helper import load_x_from_safetensor  
+from SadTalker.src.audio2pose_models.audio2pose import Audio2Pose
+from SadTalker.src.audio2exp_models.networks import SimpleWrapperV2
+from SadTalker.src.audio2exp_models.audio2exp import Audio2Exp
+from SadTalker.src.utils.safetensor_helper import load_x_from_safetensor
 
 def load_cpk(checkpoint_path, model=None, optimizer=None, device="cpu"):
     checkpoint = torch.load(checkpoint_path, map_location=torch.device(device))

@@ -1,16 +1,15 @@
-from glob import glob
 import shutil
 import torch
 from time import strftime
-import os, sys, time
+import os, sys
 from argparse import ArgumentParser
 
-from src.utils.preprocess import CropAndExtract
-from src.test_audio2coeff import Audio2Coeff
-from src.facerender.animate import AnimateFromCoeff
-from src.generate_batch import get_data
-from src.generate_facerender_batch import get_facerender_data
-from src.utils.init_path import init_path
+from SadTalker.src.utils.preprocess import CropAndExtract
+from SadTalker.src.test_audio2coeff import Audio2Coeff
+from SadTalker.src.facerender.animate import AnimateFromCoeff
+from SadTalker.src.generate_batch import get_data
+from SadTalker.src.generate_facerender_batch import get_facerender_data
+from SadTalker.src.utils.init_path import init_path
 
 
 def main(args):
@@ -35,7 +34,10 @@ def main(args):
                                 args.old_version, args.preprocess)
 
     #init model
+    print("##### "*100)
+    print(sadtalker_paths)
     preprocess_model = CropAndExtract(sadtalker_paths, device)
+
 
     audio_to_coeff = Audio2Coeff(sadtalker_paths, device)
 
@@ -80,7 +82,7 @@ def main(args):
 
     # 3dface render
     if args.face3dvis:
-        from src.face3d.visualize import gen_composed_video
+        from SadTalker.src.face3d.visualize import gen_composed_video
         gen_composed_video(args, device, first_coeff_path, coeff_path, audio_path, os.path.join(save_dir, '3dface.mp4'))
 
     #coeff2video

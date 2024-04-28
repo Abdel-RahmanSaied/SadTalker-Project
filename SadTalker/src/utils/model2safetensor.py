@@ -9,20 +9,20 @@ import sys
 
 sys.path.append('/apdcephfs/private_shadowcun/SadTalker')
 
-from src.face3d.models import networks
+from SadTalker.src.face3d.models import networks
 
-from src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
-from src.facerender.modules.mapping import MappingNet
-from src.facerender.modules.generator import OcclusionAwareGenerator, OcclusionAwareSPADEGenerator
+from SadTalker.src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
+from SadTalker.src.facerender.modules.mapping import MappingNet
+from SadTalker.src.facerender.modules.generator import OcclusionAwareSPADEGenerator
 
-from src.audio2pose_models.audio2pose import Audio2Pose
-from src.audio2exp_models.networks import SimpleWrapperV2 
-from src.test_audio2coeff import load_cpk
+from SadTalker.src.audio2pose_models.audio2pose import Audio2Pose
+from SadTalker.src.audio2exp_models.networks import SimpleWrapperV2
+from SadTalker.src.test_audio2coeff import load_cpk
 
 size = 256
 ############ face vid2vid
 config_path = os.path.join('src', 'config', 'facerender.yaml')
-current_root_path = '.'
+current_root_path = ''
 
 path_of_net_recon_model = os.path.join(current_root_path, 'checkpoints', 'epoch_20.pth')
 net_recon = networks.define_net_recon(net_recon='resnet50', use_last_fc=False, init_path='')

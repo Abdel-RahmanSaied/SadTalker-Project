@@ -72,7 +72,7 @@ instance/
 .scrapy
 
 # Sphinx documentation
-docs/_build/
+SadTalker/docs/_build/
 
 # PyBuilder
 .pybuilder/
@@ -164,7 +164,7 @@ cython_debug/
 
 SadTalker/examples/results/*
 SadTalker/gfpgan/*
-SadTalker/checkpoints/*
+checkpoints/*
 assets/*
 results/*
 Dockerfile
@@ -176,4 +176,4 @@ checkpoints
 # Mac
 .DS_Store
 !/SadTalker/gfpgan/
-!/SadTalker/checkpoints/
+!/checkpoints/

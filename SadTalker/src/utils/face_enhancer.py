@@ -5,7 +5,7 @@ from gfpgan import GFPGANer
 
 from tqdm import tqdm
 
-from src.utils.videoio import load_video_to_cv2
+from SadTalker.src.utils.videoio import load_video_to_cv2
 
 import cv2
 

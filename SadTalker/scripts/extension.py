@@ -1,10 +1,8 @@
 import os, sys
 from pathlib import Path
-import tempfile
-import gradio as gr
-from modules.call_queue import wrap_gradio_gpu_call, wrap_queued_call
+from modules.call_queue import wrap_queued_call
 from modules.shared import opts, OptionInfo
-from modules import shared, paths, script_callbacks
+from modules import paths, script_callbacks
 import launch
 import glob
 from huggingface_hub import snapshot_download
@@ -169,7 +167,7 @@ def on_ui_tabs():
     result_dir = opts.sadtalker_result_dir
     os.makedirs(result_dir, exist_ok=True)
 
-    from app_sadtalker import sadtalker_demo  
+    from SadTalker.app_sadtalker import sadtalker_demo
 
     if  os.getenv('SADTALKER_CHECKPOINTS'):
         checkpoint_path = os.getenv('SADTALKER_CHECKPOINTS')

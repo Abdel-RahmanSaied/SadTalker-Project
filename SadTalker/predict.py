@@ -2,12 +2,12 @@
 import os
 import shutil
 from argparse import Namespace
-from src.utils.preprocess import CropAndExtract
-from src.test_audio2coeff import Audio2Coeff
-from src.facerender.animate import AnimateFromCoeff
-from src.generate_batch import get_data
-from src.generate_facerender_batch import get_facerender_data
-from src.utils.init_path import init_path
+from SadTalker.src.utils.preprocess import CropAndExtract
+from SadTalker.src.test_audio2coeff import Audio2Coeff
+from SadTalker.src.facerender.animate import AnimateFromCoeff
+from SadTalker.src.generate_batch import get_data
+from SadTalker.src.generate_facerender_batch import get_facerender_data
+from SadTalker.src.utils.init_path import init_path
 from cog import BasePredictor, Input, Path
 
 checkpoints = "checkpoints"
@@ -19,7 +19,7 @@ class Predictor(BasePredictor):
         device = "cuda"
 
         
-        sadtalker_paths = init_path(checkpoints,os.path.join("src","config"))
+        sadtalker_paths = init_path(checkpoints, os.path.join("src", "config"))
 
         # init model
         self.preprocess_model = CropAndExtract(sadtalker_paths, device
@@ -89,7 +89,7 @@ class Predictor(BasePredictor):
         args.ref_pose = None if ref_pose is None else str(ref_pose)
 
         # crop image and extract 3dmm from image
-        results_dir = "results"
+        results_dir = "../results"
         if os.path.exists(results_dir):
             shutil.rmtree(results_dir)
         os.makedirs(results_dir)

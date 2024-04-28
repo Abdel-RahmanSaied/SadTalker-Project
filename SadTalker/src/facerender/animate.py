@@ -11,18 +11,16 @@ warnings.filterwarnings('ignore')
 
 import imageio
 import torch
-import torchvision
 
-
-from src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
-from src.facerender.modules.mapping import MappingNet
-from src.facerender.modules.generator import OcclusionAwareGenerator, OcclusionAwareSPADEGenerator
-from src.facerender.modules.make_animation import make_animation 
+from SadTalker.src.facerender.modules.keypoint_detector import HEEstimator, KPDetector
+from SadTalker.src.facerender.modules.mapping import MappingNet
+from SadTalker.src.facerender.modules.generator import OcclusionAwareSPADEGenerator
+from SadTalker.src.facerender.modules.make_animation import make_animation
 
 from pydub import AudioSegment 
-from src.utils.face_enhancer import enhancer_generator_with_len, enhancer_list
-from src.utils.paste_pic import paste_pic
-from src.utils.videoio import save_video_with_watermark
+from SadTalker.src.utils.face_enhancer import enhancer_generator_with_len, enhancer_list
+from SadTalker.src.utils.paste_pic import paste_pic
+from SadTalker.src.utils.videoio import save_video_with_watermark
 
 try:
     import webui  # in webui
