@@ -14,6 +14,15 @@ from SadTalker.src.utils.init_path import init_path
 from SadTalker.src.utils.preprocess import CropAndExtract
 
 
+# Set the base path for the SadTalker directory
+current_root_path = os.path.join(os.path.dirname(sys.argv[0]), 'SadTalker')
+sys.path.append(current_root_path)  # Ensure SadTalker is in the Python path
+
+
+
+
+
+
 def main(args):
     #torch.backends.cudnn.enabled = False
 
@@ -30,16 +39,16 @@ def main(args):
     ref_eyeblink = args.ref_eyeblink
     ref_pose = args.ref_pose
 
-    # current_root_path = os.path.split(sys.argv[0])[0]
-    # print("##### " * 100)
-    # print(current_root_path)
+    # Calculate the root path for SadTalker.
+    # current_root_path = os.path.join(os.path.dirname(os.path.abspath(sys.argv[0])), 'SadTalker')
+    # current_root_path = os.path.join(os.path.dirname(sys.argv[0]), 'SadTalker')
 
-    current_root_path = os.path.join(os.path.dirname(sys.argv[0]), 'SadTalker')
+    print("##### Current Root Path: ", current_root_path)
+
+    print(current_root_path)
 
     sadtalker_paths = init_path(args.checkpoint_dir, os.path.join(current_root_path, 'src/config'), args.size,
                                 args.old_version, args.preprocess)
-
-
 
     #init model
 
@@ -111,14 +120,14 @@ def main(args):
 if __name__ == '__main__':
 
     parser = ArgumentParser()
-    parser.add_argument("--driven_audio", default='./examples/driven_audio/bus_chinese.wav',
+    parser.add_argument("--driven_audio", default='./SadTalker/examples/driven_audio/bus_chinese.wav',
                         help="path to driven audio")
-    parser.add_argument("--source_image", default='./examples/source_image/full_body_1.png',
+    parser.add_argument("--source_image", default='./SadTalker/examples/source_image/full_body_1.png',
                         help="path to source image")
     parser.add_argument("--ref_eyeblink", default=None, help="path to reference video providing eye blinking")
     parser.add_argument("--ref_pose", default=None, help="path to reference video providing pose")
-    parser.add_argument("--checkpoint_dir", default='./checkpoints', help="path to output")
-    parser.add_argument("--result_dir", default='./results', help="path to output")
+    parser.add_argument("--checkpoint_dir", default='./SadTalker/checkpoints', help="path to output")
+    parser.add_argument("--result_dir", default='./SadTalker/results', help="path to output")
     parser.add_argument("--pose_style", type=int, default=0, help="input pose style from [0, 46)")
     parser.add_argument("--batch_size", type=int, default=2, help="the batch size of facerender")
     parser.add_argument("--size", type=int, default=256, help="the image size of the facerender")
