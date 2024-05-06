@@ -1,10 +1,10 @@
-from sadTalker import SadTalkerApp
+from SadTalker.sadTalker import SadTalkerApp
 
 
 # Usage
 app = SadTalkerApp()
 # img_path = app.display_animation_interface()  # User chooses image via command line input
-img_path = '417A5876.jpg'
+img_path = 'SadTalkerProject/417A5876.jpg'
 
 print("Image path:", img_path)
 
